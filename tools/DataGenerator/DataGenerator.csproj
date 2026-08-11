@@ -7,10 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="tools\**" />
-    <Content Remove="tools\**" />
-    <None Remove="tools\**" />
-  </ItemGroup>
-
 </Project>
