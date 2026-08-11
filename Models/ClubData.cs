@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace BigDataCorp_DesafioBatch.Models;
 
-public class ClubData
+public class ClubDto
 {
     [JsonPropertyName("club_id")]
     public string ClubId { get; set; } = string.Empty;
@@ -38,10 +38,10 @@ public class ClubData
     public List<string>? Colors { get; set; }
 
     [JsonPropertyName("players")]
-    public List<PlayerData>? Players { get; set; }
+    public List<PlayerDto>? Players { get; set; }
 }
 
-public class PlayerData
+public class PlayerDto
 {
     [JsonPropertyName("player_id")]
     public string PlayerId { get; set; } = string.Empty;
