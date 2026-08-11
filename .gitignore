@@ -480,3 +480,7 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+
+!tests/fixtures/testes_extremos.jsonl
+# Ignorar bases de dados locais gigantes
