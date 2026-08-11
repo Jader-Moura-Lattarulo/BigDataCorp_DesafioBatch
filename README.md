@@ -23,3 +23,14 @@ O motor principal foi arquitetado obedecendo rigorosas diretrizes de engenharia 
 
 - **Otimização Extrema de Memória (Alta Volumetria)**: O arquivo de entrada *nunca* é carregado de forma integral na memória RAM. O processo inteiro flui nativamente via `StreamReader` e `StreamWriter`, sendo lido e gravado *linha a linha*. Isso assegura que a aplicação permaneça leve e veloz mesmo ingerindo gigabytes de informações.
 - **Tolerância a Falhas e Resiliência**: Arquivos volumosos frequentemente possuem sujeira estrutural. O laço de leitura encapsula o parsing em instâncias de blocos `try-catch` restritos ao nível do registro. Se um JSON for malformado, o erro é contido (logado no console) e o motor continua processando pacificamente o restante do lote.
+
+## 🧪 Testes e Validação de Arquitetura
+
+Para garantir a robustez e a eficiência do motor de processamento, o projeto inclui testes adicionais que validam as regras de negócio e o consumo de memória:
+
+*   **Testes de Borda (Edge Cases):** 
+    Na pasta `tests/fixtures/`, há um arquivo `testes_extremos.jsonl` contendo registros com datas inválidas, nomes com aspas e vírgulas (para forçar o escape RFC 4180), atributos nulos e times de séries não permitidas. O sistema é capaz de higienizar e filtrar esses dados sem interrupções.
+    *Exemplo de uso:* `dotnet run -- tests/fixtures/testes_extremos.jsonl`
+
+*   **Teste de Carga / Estresse (Alta Volumetria):**
+    Para provar a eficácia da leitura e escrita via *Streams* (baixo consumo de memória), foi desenvolvido um script gerador de dados. O projeto `tools/DataGenerator` é capaz de criar uma base sintética com mais de 100.000 clubes e milhões de jogadores em poucos segundos, que pode ser processada pelo motor principal sem gargalos de RAM.
