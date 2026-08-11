@@ -34,3 +34,10 @@ Para garantir a robustez e a eficiência do motor de processamento, o projeto in
 
 *   **Teste de Carga / Estresse (Alta Volumetria):**
     Para provar a eficácia da leitura e escrita via *Streams* (baixo consumo de memória), foi desenvolvido um script gerador de dados. O projeto `tools/DataGenerator` é capaz de criar uma base sintética com mais de 100.000 clubes e milhões de jogadores em poucos segundos, que pode ser processada pelo motor principal sem gargalos de RAM.
+
+    ## 📂 Estruturação do Projeto e Governança
+
+Para fins de auditoria, transparência e rastreabilidade do desenvolvimento (conforme diretrizes do desafio), o repositório está organizado com os seguintes artefatos de engenharia:
+
+*   **Planos de Ação (`plans/`):** Todos os passos arquiteturais, divisões de tarefas e critérios de aceitação desenvolvidos antes de cada implementação de código estão arquivados nesta pasta.
+*   **Histórico de IA (`conversation_history.md`):** O registro completo e transparente da interação colaborativa utilizada para projetar, refatorar e validar a solução está disponível na raiz do projeto.
